@@ -6,21 +6,22 @@ var searchTerms = ["Futurama", "Rick & Morty", "Garfield", "Duck Tales"];
 //**   Variables   **//
 
 var apiKey = "brX9hakQgeVuceuukT4rEEa4B1xHod1Y";
-
-
+var limit = 10;
 
 
 //**   Functions   **//
 
 function doSearch(search) {
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=" + apiKey + "&tag=" + search;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + search + "&limit=10";
     //  Ajax Call
     $.ajax({
         url: queryURL,
         method: "GET"
       })
         .then(function(response) {
-            showResults(response);
+            console.log(response);
+            var data = response.data;
+            showResults(data);
 
         });
 }
@@ -39,10 +40,16 @@ function renderButtons () {
 
 }
 
-function showResults(responseObject) {
+function showResults(dataObj) {
     // Show the search results
-    var resObj = JSON.stringify(responseObject);
-    console.log(resObj);
+    for ( var i = 0; i < dataObj.length; i++ ){
+        var img = $("<img>");
+        img.attr("src", dataObj[i].images.fixed_width_small.url)
+        var div = $("<div>");
+        div.append(img);
+        $("#search-view").append(div);
+    }
+
 }
 
 

@@ -1,6 +1,6 @@
 //**   Array of search terms   **//
 
-var searchTerms = ["Futurama", "Rick & Morty", "Garfield", "Duck Tales"];
+var searchTerms = ["Futurama", "Rick and Morty", "Garfield", "Duck Tales"];
 
 
 //**   Variables   **//
@@ -42,16 +42,26 @@ function renderButtons () {
 
 function showResults(dataObj) {
     // Show the search results
+    $("#search-view").empty();
     for ( var i = 0; i < dataObj.length; i++ ){
         var img = $("<img>");
-        img.attr("src", dataObj[i].images.fixed_width_small.url)
+        img
+        .attr("src", dataObj[i].images.fixed_width_still.url)
+        .attr("alt", dataObj[i].title)
+        .attr("data-still" , dataObj[i].images.fixed_width_still.url)
+        .attr("data-animate" , dataObj[i].images.fixed_width.url)
+        .attr("data-state" , "still")
+        .addClass("gif");
+        var rating = $("<p>");
+        rating.text(dataObj[i].rating);
         var div = $("<div>");
-        div.append(img);
+        div
+        .append(img)
+        .append(rating);
         $("#search-view").append(div);
     }
 
 }
-
 
 renderButtons();
 
@@ -70,6 +80,19 @@ $(document).ready(function() {
     $(document).on("click", ".search-term", function() {
         var searchTerm = $(this).attr("search-term");
         doSearch(searchTerm);
+
+    });
+
+    $(document).on("click", ".gif", function() {
+        if ( $(this).attr("data-state") === "still"){
+            $(this)
+            .attr("src", ($(this).attr("data-animate")))
+            .attr("data-state", "animate");
+        } else {
+            $(this)
+            .attr("src", ($(this).attr("data-still")))
+            .attr("data-state", "still");
+        }
 
     });
 

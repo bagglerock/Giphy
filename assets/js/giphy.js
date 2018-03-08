@@ -1,6 +1,6 @@
 //**   Array of search terms   **//
 
-var searchTerms = ["cat", "dog", "Garfield", "Odie"];
+var searchTerms = ["Futurama", "Rick & Morty", "Garfield", "Duck Tales"];
 
 
 //**   Variables   **//
@@ -20,24 +20,33 @@ function doSearch(search) {
         method: "GET"
       })
         .then(function(response) {
-            console.log(response);
-
+            showResults(response);
 
         });
 }
 
 function renderButtons () {
     //  Get the stuff from the array and make the buttons
-    var button = $("<button>");
+    $("#buttons-view").empty();
+    for ( var i = 0; i < searchTerms.length; i++ ){
+        var button = $("<button>");
+        button
+        .text(searchTerms[i])
+        .addClass("search-term")
+        .attr("search-term", searchTerms[i]);
+        $("#buttons-view").append(button);
+    }
 
 }
 
-function showResults () {
+function showResults(responseObject) {
     // Show the search results
+    var resObj = JSON.stringify(responseObject);
+    console.log(resObj);
 }
 
 
-
+renderButtons();
 
 //**   Event Listeners   **//
 
@@ -47,7 +56,14 @@ $(document).ready(function() {
         event.preventDefault();
         var input = $("#search-input").val().trim();
         $("#search-input").val("");
-        doSearch(input);
+        searchTerms.push(input);
+        renderButtons();
+    });
+
+    $(document).on("click", ".search-term", function() {
+        var searchTerm = $(this).attr("search-term");
+        doSearch(searchTerm);
+
     });
 
 
@@ -57,5 +73,3 @@ $(document).ready(function() {
 
 
 });
-
-console.log("test");

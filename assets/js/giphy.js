@@ -12,7 +12,7 @@ var limit = 10;
 //**   Functions   **//
 
 function doSearch(search) {
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + search + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + search + "&limit=" + limit;
     //  Ajax Call
     $.ajax({
         url: queryURL,
@@ -103,3 +103,14 @@ $(document).ready(function() {
 
 
 });
+
+/**
+
+Ideas to put out there:
+
+Maybe make a side div that stores all the previous searches.  
+Make it a general search since there isnt a restriction on search terms
+add some colors and stuff
+
+
+*/

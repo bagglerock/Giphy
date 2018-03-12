@@ -1,6 +1,6 @@
 //**   Array of search terms   **//
 
-var searchTerms = ["Futurama", "Rick and Morty", "Garfield", "Duck Tales"];
+var searchTerms = ["Futurama", "Rick and Morty", "Garfield", "Duck Tales", "Voltron", "Darkwing Duck", "South Park", "Transformers", "GI Joe", "Go-bots"];
 
 
 //**   Variables   **//
@@ -53,7 +53,7 @@ function showResults(dataObj) {
         .attr("data-state" , "still")
         .addClass("gif");
         var rating = $("<p>");
-        rating.text(dataObj[i].rating);
+        rating.text("Rated: " + dataObj[i].rating);
         var div = $("<div>");
         div
         .append(img)
@@ -72,13 +72,19 @@ $(document).ready(function() {
 
     $("#add-search").on("click", function() {
         event.preventDefault();
-        var input = $("#search-input").val().trim();
-        $("#search-input").val("");
-        searchTerms.push(input);
-        renderButtons();
+        if ($("#search-input").val().trim() !== ""){
+            $("#message").text("");
+            var input = $("#search-input").val().trim();
+            $("#search-input").val("");
+            searchTerms.push(input);
+            renderButtons();
+        } else {
+            $("#message").text("<----- Sir/Madam! Please type something in.");
+        }
     });
 
     $(document).on("click", ".search-term", function() {
+        $("#message").text("");
         var searchTerm = $(this).attr("search-term");
         doSearch(searchTerm);
 

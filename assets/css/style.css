@@ -1,11 +1,14 @@
 body {
     background-color: orange;
+    font-family: 'Bangers', cursive;
 }
 
 search {
     background-color: rosybrown;
     height: 75px;
-    padding-top: 20px;
+    padding-top: 18px;
+    border-top: solid maroon 5px;
+    border-bottom: solid maroon 5px;
 }
 
 main {

@@ -1,0 +1,34 @@
+body {
+    background-color: orange;
+}
+
+search {
+    background-color: rosybrown;
+    height: 75px;
+    padding-top: 20px;
+}
+
+main {
+    margin-top: 15px;
+}
+
+main #buttons-view button {
+    margin: 5px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 10px;
+
+}
+
+.gif {
+    height: 100px;
+}
+
+.gif-div {
+    float: left;
+    height: 100px;
+    margin: 10px;
+}

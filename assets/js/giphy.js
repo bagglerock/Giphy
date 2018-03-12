@@ -33,7 +33,7 @@ function renderButtons () {
         var button = $("<button>");
         button
         .text(searchTerms[i])
-        .addClass("search-term")
+        .addClass("search-term btn btn-danger")
         .attr("search-term", searchTerms[i]);
         $("#buttons-view").append(button);
     }
@@ -57,7 +57,8 @@ function showResults(dataObj) {
         var div = $("<div>");
         div
         .append(img)
-        .append(rating);
+        .append(rating)
+        .addClass("gif-div");
         $("#search-view").append(div);
     }
 

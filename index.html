@@ -9,17 +9,30 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Giphy API</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Search</h1>
-        <div id="buttons-view"></div>
-        <form id="search-form">
-            <input type="text" id="search-input">
-            <input id="add-search" type="submit" value="Search">
-        </form>
-        <div id="search-view"></div>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col-md-12">
+                <h1>Giphy API Search</h1>
+            </div>
+        </header>
+        <search class="row">
+            <div class="col-md-12">
+                <form id="search-form">
+                    <input type="text" id="search-input">
+                    <input id="add-search" type="submit" value="Search">
+                </form>
+            </div>
+        </search>
+        <main class="row">
+            <div class="col-md-3" id="buttons-view"></div>
+            <div class="col-md-9" id="search-view"></div>
+        </main>
+
     </div>
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="./assets/js/giphy.js" ></script>
+<script type="text/javascript" src="./assets/js/giphy.js"></script>
+
 </html>
